@@ -1,0 +1,447 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>NP Elétrica — Segurança, tecnologia e eficiência</title>
+
+  <!-- Favicon e Ícones para dispositivos -->
+<link rel="icon" href="" type="image/png" sizes="32x32">
+<link rel="icon" href="https://npeletrica.com.br/assets/img/logo.png" type="image/png" sizes="192x192">
+<link rel="apple-touch-icon" href="https://npeletrica.com.br/assets/img/logo.png">
+
+<!-- Open Graph (Facebook, LinkedIn, etc) -->
+<meta property="og:title" content="Mundonline - Trasformando sonhos em realidade">
+<meta property="og:description" content="Agência digital especializada em desenvolvimento web, e-commerce, marketing digital e automação. Tecnologia de ponta para seu negócio.">
+<meta property="og:image" content="https://npeletrica.com.br/assets/img/logo.png">
+<meta property="og:url" content="https://npeletrica.com.br">
+<meta property="og:type" content="website">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Trasformando sonhos em realidade">
+<meta name="twitter:description" content="Agência digital especializada em desenvolvimento web, e-commerce, marketing digital e automação. Tecnologia de ponta para seu negócio.">
+<meta name="twitter:image" content="https://npeletrica.com.br/assets/img/logo.png">
+
+
+
+
+
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    /* Tailwind configuration: cores e dark mode automático */
+    tailwind.config = {
+      darkMode: 'class', /* we'll add 'dark' based on prefers-color-scheme */
+      theme: {
+        extend: {
+          colors: {
+            primary: '#1e40af',      // azul escuro (brand)
+            secondary: '#3b82f6',    // azul claro / destaques
+            accent: '#f59e0b',       // amarelo destaque
+            whats: '#25d366',        // whatsapp
+            surface: {
+              light: '#f8fafc',
+              dark: '#0b1220'
+            },
+            card: {
+              light: '#ffffff',
+              dark: '#0f1724'
+            },
+            text: {
+              light: '#0f1724',
+              dark: '#e6eef8'
+            }
+          },
+        }
+      }
+    };
+  </script>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap Icons (opcional) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+  <!-- AOS -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+  <style>
+    :root { --nav-height: 72px; }
+    html { scroll-behavior: smooth; }
+    body { font-family: "Lato", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; }
+
+    /* WhatsApp floating button */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      width: 64px;
+      height: 64px;
+      border-radius: 9999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 60;
+      box-shadow: 0 8px 24px rgba(2,6,23,0.25);
+      animation: pulse 2.2s infinite;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37,211,102,0.36); }
+      70% { transform: scale(1.06); box-shadow: 0 0 0 14px rgba(37,211,102,0); }
+      100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37,211,102,0); }
+    }
+
+    /* Mobile menu animation */
+    .hamburger > span {
+      display: block;
+      height: 2px;
+      width: 22px;
+      background: currentColor;
+      border-radius: 2px;
+      transition: transform .25s ease, opacity .2s ease;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* Sticky offset for anchor links (navbar fixed) */
+    .section-anchor { scroll-margin-top: calc(var(--nav-height) + 12px); }
+  </style>
+</head>
+<body class="bg-surface-light text-text-light dark:bg-surface-dark dark:text-text-dark">
+
+<script>
+  // Add 'dark' class automatically if user prefers dark scheme
+  (function() {
+    try {
+      const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (prefersDark) document.documentElement.classList.add('dark');
+    } catch(e) { /* ignore */ }
+  })();
+</script>
+
+<!-- NAVBAR -->
+<header class="fixed top-0 left-0 w-full z-50">
+  <nav id="mainNav" class="bg-white/80 backdrop-blur-md dark:bg-surface-dark/90 border-b border-gray-100 dark:border-gray-800 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-18" style="height:72px">
+        <!-- Brand -->
+        <a href="#home" class="flex items-center gap-3">
+          <img src="https://npeletrica.com.br/assets/img/logo.png" alt="NP Elétrica" class="w-10 h-10 rounded-full object-cover" />
+          <span class="font-bold text-lg text-primary dark:text-secondary">NP Especialista Elétrica</span>
+        </a>
+
+        <!-- Desktop menu -->
+        <div class="hidden md:flex items-center space-x-6">
+          <a href="#home" class="nav-link text-gray-700 dark:text-gray-200 hover:text-secondary">Início</a>
+          <a href="#servicos" class="nav-link text-gray-700 dark:text-gray-200 hover:text-secondary">Serviços</a>
+          <a href="#sobre" class="nav-link text-gray-700 dark:text-gray-200 hover:text-secondary">Sobre</a>
+          <a href="#contato" class="nav-link text-gray-700 dark:text-gray-200 hover:text-secondary">Contato</a>
+          <a href="https://wa.me/5521973508754" target="_blank" class="inline-flex items-center gap-2 bg-whats text-white px-4 py-2 rounded-full shadow hover:opacity-95 transition">
+            <i class="bi bi-whatsapp"></i> Falar
+          </a>
+        </div>
+
+        <!-- Mobile menu button -->
+        <div class="md:hidden">
+          <button id="btnMobile" aria-label="Abrir menu" class="hamburger text-gray-800 dark:text-gray-200">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Menu (hidden by default) -->
+    <div id="mobileMenu" class="md:hidden hidden px-4 pb-6">
+      <div class="space-y-3 pt-2 pb-3">
+        <a href="#home" class="block nav-link-mobile py-2 rounded-md text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800">Início</a>
+        <a href="#servicos" class="block nav-link-mobile py-2 rounded-md text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800">Serviços</a>
+        <a href="#sobre" class="block nav-link-mobile py-2 rounded-md text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800">Sobre</a>
+        <a href="#contato" class="block nav-link-mobile py-2 rounded-md text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800">Contato</a>
+        <a href="https://wa.me/5521973508754" target="_blank" class="block py-2 rounded-md bg-whats text-white text-center">Falar no WhatsApp</a>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<main class="pt-[84px]"> <!-- offset for fixed navbar -->
+
+  <!-- MASTHEAD -->
+  <section id="home" class="section-anchor relative h-[85vh] min-h-[520px] bg-cover bg-center flex items-center" style="background-image: url('assets/img/bg-header.jpg')">
+    <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-black/25 to-black/50 dark:from-black/60"></div>
+    <div class="relative z-10 max-w-6xl mx-auto px-6 text-center" data-aos="fade-up">
+      <div class="inline-block bg-white/10 backdrop-blur-sm rounded-xl px-6 py-4 mb-6">
+        <img src="https://npeletrica.com.br/assets/img/logo.png" alt="logo" class="w-14 h-14 rounded-full inline-block" />
+      </div>
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight text-white drop-shadow-md">
+        NP Elétrica — sua energia com segurança, tecnologia e eficiência.
+      </h1>
+      <p class="mt-4 max-w-2xl mx-auto text-white/90">Instalações, manutenção, modernização de quadros e projetos de iluminação com equipe certificada e conforme NBR.</p>
+      <div class="mt-8 flex items-center justify-center gap-4">
+        <a href="#servicos" class="inline-block bg-secondary text-white px-6 py-3 rounded-full font-semibold shadow hover:bg-primary transition" role="button">Nossos serviços</a>
+        <a href="https://wa.me/5521973508754" target="_blank" class="inline-flex items-center gap-2 border border-white/20 text-white px-5 py-3 rounded-full hover:bg-white/5 transition">
+          <i class="bi bi-whatsapp"></i> Fale no WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ICONS GRID / FEATURES -->
+  <section class="py-12 bg-surface-light dark:bg-surface-dark">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+        <div class="p-6 bg-card-light dark:bg-card-dark rounded-xl shadow" data-aos="fade-up" data-aos-delay="50">
+          <div class="flex items-center justify-center w-16 h-16 rounded-full bg-secondary/10 text-secondary mb-4">
+            <i class="bi bi-calculator fs-3 text-2xl"></i>
+          </div>
+          <h3 class="font-semibold text-primary dark:text-secondary mb-2">Orçamento Preciso</h3>
+          <p class="text-sm text-gray-600 dark:text-gray-300">Solicite avaliação remota ou no local com orçamento detalhado.</p>
+        </div>
+
+        <div class="p-6 bg-card-light dark:bg-card-dark rounded-xl shadow" data-aos="fade-up" data-aos-delay="150">
+          <div class="flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 text-primary mb-4">
+            <i class="bi bi-person-badge fs-3 text-2xl"></i>
+          </div>
+          <h3 class="font-semibold text-primary dark:text-secondary mb-2">Profissionais Qualificados</h3>
+          <p class="text-sm text-gray-600 dark:text-gray-300">Equipe certificada e atualizada com normas NBR.</p>
+        </div>
+
+        <div class="p-6 bg-card-light dark:bg-card-dark rounded-xl shadow" data-aos="fade-up" data-aos-delay="250">
+          <div class="flex items-center justify-center w-16 h-16 rounded-full bg-accent/10 text-accent mb-4">
+            <i class="bi bi-shield-check fs-3 text-2xl"></i>
+          </div>
+          <h3 class="font-semibold text-primary dark:text-secondary mb-2">Segurança Técnica</h3>
+          <p class="text-sm text-gray-600 dark:text-gray-300">Serviços executados com rigor técnico e garantia.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SHOWCASE IMAGES -->
+  <section class="py-12">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+        <div class="order-2 lg:order-1" data-aos="fade-right">
+          <h2 class="text-2xl font-bold text-primary mb-3">Adequação de Tomadas e Interruptores</h2>
+          <p class="text-gray-700 dark:text-gray-300">Instalação e substituição de pontos de energia com conformidade NBR e acabamento profissional.</p>
+        </div>
+        <div class="order-1 lg:order-2 rounded-xl overflow-hidden h-64 bg-cover bg-center shadow" style="background-image:url('assets/img/bg-showcase-1.jpg')" data-aos="zoom-in"></div>
+
+        <div class="rounded-xl overflow-hidden h-64 bg-cover bg-center shadow" style="background-image:url('assets/img/bg-showcase-2.jpg')" data-aos="zoom-in"></div>
+        <div data-aos="fade-left">
+          <h2 class="text-2xl font-bold text-primary mb-3">Montagem e Modernização de Quadros</h2>
+          <p class="text-gray-700 dark:text-gray-300">Instalação e retrofit de quadros, dimensionamento de circuitos e dispositivos (DR, DPS, disjuntores) conforme NBR 5410.</p>
+        </div>
+
+        <div class="order-2 lg:order-1 rounded-xl overflow-hidden h-64 bg-cover bg-center shadow" style="background-image:url('assets/img/bg-showcase-3.jpg')" data-aos="zoom-in"></div>
+        <div class="order-1 lg:order-2" data-aos="fade-right">
+          <h2 class="text-2xl font-bold text-primary mb-3">Instalação Técnica de Chuveiros</h2>
+          <p class="text-gray-700 dark:text-gray-300">Circuitos dedicados e dispositivos de proteção em conformidade com a NBR para áreas úmidas.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES GRID (cards maiores) -->
+  <section id="servicos" class="py-12 bg-surface-light dark:bg-surface-dark section-anchor">
+    <div class="max-w-7xl mx-auto px-6">
+      <h3 class="text-3xl font-bold text-primary mb-8" data-aos="fade-up">Nossos Serviços</h3>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- repeat cards -->
+        <div class="bg-card-light dark:bg-card-dark p-6 rounded-xl shadow" data-aos="zoom-in" data-aos-delay="80">
+          <div class="text-4xl text-accent mb-3"><i class="bi bi-lightning-charge-fill"></i></div>
+          <h4 class="font-semibold text-primary mb-2">Montagem de Quadros Elétricos</h4>
+          <p class="text-sm text-gray-600 dark:text-gray-300">Montagem completa para residências e comércios, com padronização e organização.</p>
+        </div>
+
+        <div class="bg-card-light dark:bg-card-dark p-6 rounded-xl shadow" data-aos="zoom-in" data-aos-delay="160">
+          <div class="text-4xl text-secondary mb-3"><i class="bi bi-gear-fill"></i></div>
+          <h4 class="font-semibold text-primary mb-2">Modernização de Quadros</h4>
+          <p class="text-sm text-gray-600 dark:text-gray-300">Retrofit para aumentar eficiência, segurança e conformidade técnica.</p>
+        </div>
+
+        <div class="bg-card-light dark:bg-card-dark p-6 rounded-xl shadow" data-aos="zoom-in" data-aos-delay="240">
+          <div class="text-4xl text-accent mb-3"><i class="bi bi-lightbulb-fill"></i></div>
+          <h4 class="font-semibold text-primary mb-2">Instalação de Iluminação LED</h4>
+          <p class="text-sm text-gray-600 dark:text-gray-300">Projetos de iluminação econômica e estética para ambiente residencial e comercial.</p>
+        </div>
+
+        <div class="bg-card-light dark:bg-card-dark p-6 rounded-xl shadow" data-aos="zoom-in" data-aos-delay="320">
+          <div class="text-4xl text-red-500 mb-3"><i class="bi bi-tools"></i></div>
+          <h4 class="font-semibold text-primary mb-2">Reparos Elétricos</h4>
+          <p class="text-sm text-gray-600 dark:text-gray-300">Atendimento para curtos, quedas de energia e diagnóstico de falhas.</p>
+        </div>
+
+        <div class="bg-card-light dark:bg-card-dark p-6 rounded-xl shadow" data-aos="zoom-in" data-aos-delay="400">
+          <div class="text-4xl text-accent mb-3"><i class="bi bi-plug-fill"></i></div>
+          <h4 class="font-semibold text-primary mb-2">Troca de Fiação</h4>
+          <p class="text-sm text-gray-600 dark:text-gray-300">Substituição de fiações antigas para maior segurança e performance.</p>
+        </div>
+
+        <div class="bg-card-light dark:bg-card-dark p-6 rounded-xl shadow" data-aos="zoom-in" data-aos-delay="480">
+          <div class="text-4xl text-secondary mb-3"><i class="bi bi-droplet-fill"></i></div>
+          <h4 class="font-semibold text-primary mb-2">Instalação de Chuveiro</h4>
+          <p class="text-sm text-gray-600 dark:text-gray-300">Dimensionamento correto do circuito e proteção DR em áreas molhadas.</p>
+        </div>
+
+        <div class="bg-card-light dark:bg-card-dark p-6 rounded-xl shadow" data-aos="zoom-in" data-aos-delay="560">
+          <div class="text-4xl text-accent mb-3"><i class="bi bi-journal-text"></i></div>
+          <h4 class="font-semibold text-primary mb-2">Orçamento e Projeto</h4>
+          <p class="text-sm text-gray-600 dark:text-gray-300">Levantamento técnico e projeto com orçamento detalhado.</p>
+        </div>
+
+        <div class="bg-card-light dark:bg-card-dark p-6 rounded-xl shadow" data-aos="zoom-in" data-aos-delay="640">
+          <div class="text-4xl text-secondary mb-3"><i class="bi bi-check2-square"></i></div>
+          <h4 class="font-semibold text-primary mb-2">Laudos e Vistorias</h4>
+          <p class="text-sm text-gray-600 dark:text-gray-300">Vistorias técnicas e emissão de laudos conforme normas vigentes.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS / SERVICES extended -->
+  <section class="py-12 bg-white/60 dark:bg-surface-dark">
+    <div class="max-w-7xl mx-auto px-6">
+      <h3 class="text-3xl font-bold text-primary mb-6" data-aos="fade-up">Por que escolher a NP Elétrica?</h3>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <blockquote class="p-6 bg-card-light dark:bg-card-dark rounded-xl shadow" data-aos="fade-up" data-aos-delay="100">
+          <p class="text-gray-700 dark:text-gray-200">"Agilidade no atendimento e execução impecável. Recomendo a equipe!"</p>
+          <footer class="mt-4 text-sm text-gray-500 dark:text-gray-400">— Cliente Satisfeito</footer>
+        </blockquote>
+
+        <blockquote class="p-6 bg-card-light dark:bg-card-dark rounded-xl shadow" data-aos="fade-up" data-aos-delay="200">
+          <p class="text-gray-700 dark:text-gray-200">"Profissionais técnicos e comunicativos, projeto entregue dentro do prazo."</p>
+          <footer class="mt-4 text-sm text-gray-500 dark:text-gray-400">— Condomínio Alfa</footer>
+        </blockquote>
+
+        <div class="p-6 bg-card-light dark:bg-card-dark rounded-xl shadow flex flex-col justify-center" data-aos="fade-up" data-aos-delay="300">
+          <h4 class="font-semibold text-primary mb-2">Serviço Garantido</h4>
+          <p class="text-sm text-gray-600 dark:text-gray-300">Trabalhamos com garantia técnica e materiais de qualidade reconhecida.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CALL TO ACTION -->
+  <section id="contato" class="section-anchor py-12 bg-gradient-to-r from-primary/10 via-transparent to-accent/10 dark:from-primary/20 dark:to-accent/10">
+    <div class="max-w-4xl mx-auto px-6 text-center" data-aos="zoom-in">
+      <h3 class="text-2xl md:text-3xl font-bold text-primary mb-3">Entre em contato agora mesmo!</h3>
+      <p class="text-gray-700 dark:text-gray-300 mb-6">Fale conosco pelo WhatsApp — orçamento rápido e atendimento personalizado.</p>
+      <a href="https://wa.me/5521973508754" target="_blank" class="inline-flex items-center gap-3 bg-whats text-white px-6 py-3 rounded-full font-semibold shadow-lg hover:opacity-95 transition">
+        <i class="bi bi-whatsapp text-xl"></i> Enviar mensagem
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-surface-light dark:bg-surface-dark border-t border-gray-100 dark:border-gray-800 py-8">
+    <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
+      <div>
+        <a href="#home" class="flex items-center gap-3 mb-4">
+          <img src="assets/img/logo.png" alt="NP" class="w-10 h-10 rounded-full">
+          <span class="font-bold text-primary dark:text-secondary">NP Elétrica</span>
+        </a>
+        <p class="text-sm text-gray-600 dark:text-gray-300">Rua 14 de Julho, nº 85, Loja A, Vila Guanabara — Duque de Caxias/RJ</p>
+        <p class="text-sm text-gray-600 dark:text-gray-300 mt-2">☎️ (21) 97310-5649 | (21) 96983-9948</p>
+      </div>
+
+      <div class="text-sm">
+        <h4 class="font-semibold mb-2 text-primary dark:text-secondary">Links rápidos</h4>
+        <ul class="space-y-2 text-gray-600 dark:text-gray-300">
+          <li><a href="#servicos" class="hover:text-secondary">Serviços</a></li>
+          <li><a href="#sobre" class="hover:text-secondary">Sobre</a></li>
+          <li><a href="#contato" class="hover:text-secondary">Contato</a></li>
+        </ul>
+      </div>
+
+      <div class="text-sm text-gray-600 dark:text-gray-300">
+        <h4 class="font-semibold mb-2 text-primary dark:text-secondary">Siga-nos</h4>
+        <div class="flex items-center gap-3">
+          <a href="https://www.instagram.com/npespecialistaeletrica" target="_blank" class="text-secondary hover:text-primary"><i class="bi bi-instagram text-2xl"></i></a>
+          <a href="https://wa.me/5521973508754" target="_blank" class="text-whats hover:opacity-90"><i class="bi bi-whatsapp text-2xl"></i></a>
+          <a href="mailto:contato@npeletrica.com" class="text-red-500 hover:opacity-90"><i class="bi bi-envelope-fill text-2xl"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-6 mt-8 text-center text-sm text-gray-500 dark:text-gray-400">
+      &copy; <span id="year"></span> NP Elétrica — Todos os direitos reservados.
+    </div>
+  </footer>
+</main>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/5521973508754" target="_blank" aria-label="WhatsApp" class="whatsapp-float bg-whats text-white">
+  <i class="bi bi-whatsapp text-2xl"></i>
+</a>
+
+<!-- SCRIPTS: AOS, menu behavior, scrollspy -->
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init({ duration: 900, once: true, offset: 80 });
+
+  // Year in footer
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Mobile menu toggle
+  const btnMobile = document.getElementById('btnMobile');
+  const mobileMenu = document.getElementById('mobileMenu');
+  btnMobile.addEventListener('click', () => {
+    btnMobile.classList.toggle('open');
+    mobileMenu.classList.toggle('hidden');
+  });
+
+  // Add active class to nav links on scroll (simple scrollspy)
+  const sections = Array.from(document.querySelectorAll('section[id], header#home'));
+  const navLinks = Array.from(document.querySelectorAll('.nav-link'));
+  const mobileLinks = Array.from(document.querySelectorAll('.nav-link-mobile'));
+
+  function onScrollSpy() {
+    const scrollPos = window.scrollY + (window.innerHeight * 0.18);
+    let currentId = sections[0].id || 'home';
+    for (const sec of sections) {
+      if (!sec.id) continue;
+      const top = sec.offsetTop;
+      const height = sec.offsetHeight;
+      if (scrollPos >= top && scrollPos < top + height) {
+        currentId = sec.id;
+        break;
+      }
+    }
+    navLinks.forEach(a => {
+      const href = a.getAttribute('href')?.replace('#','');
+      if (href === currentId) a.classList.add('font-extrabold', 'text-secondary');
+      else a.classList.remove('font-extrabold', 'text-secondary');
+    });
+    mobileLinks.forEach(a => {
+      const href = a.getAttribute('href')?.replace('#','');
+      if (href === currentId) a.classList.add('font-extrabold', 'text-secondary');
+      else a.classList.remove('font-extrabold', 'text-secondary');
+    });
+  }
+  window.addEventListener('scroll', onScrollSpy);
+  window.addEventListener('load', onScrollSpy);
+  window.addEventListener('resize', onScrollSpy);
+
+  // Close mobile menu when clicking a link
+  document.querySelectorAll('#mobileMenu a').forEach(a => {
+    a.addEventListener('click', () => {
+      mobileMenu.classList.add('hidden');
+      btnMobile.classList.remove('open');
+    });
+  });
+
+  // change navbar shadow on scroll
+  const navbar = document.getElementById('mainNav');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 20) navbar.classList.add('shadow-md');
+    else navbar.classList.remove('shadow-md');
+  });
+</script>
+
+</body>
+</html>
